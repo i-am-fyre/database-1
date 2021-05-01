@@ -64,6 +64,9 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
   ((@maxConditionEntry + 15), -2, (@maxConditionEntry + 8), (@maxConditionEntry + 14), "Proving Pits - Warlock OR Warrior OR Mage OR Shaman OR Druid OR Rogue OR Hunter OR Priest");
   
 
+-- Create db_scripts entry for handling Jailor movement, opening cage, Naga movement, and making Naga active.
+INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES ();
+
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
 DELETE FROM `gossip_menu_option` WHERE `menu_id`=10974;
 INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `action_script_id`, `box_coded`, `box_money`, `box_text`, `condition_id`) VALUES (10974, 0, 0, "I'm ready to face my challenge.", 1, 1, -1, 0, 0, 0, 0, "", (@maxConditionEntry + 15));
