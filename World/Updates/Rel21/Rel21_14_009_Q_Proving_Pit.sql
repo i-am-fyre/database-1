@@ -65,18 +65,17 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
   
 
 -- Create db_scripts entry for handling Jailor movement, opening cage, Naga movement, and making Naga active.
-INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES ();
+SET @maxDBScripts := (SELECT max(`script_guid`) FROM `db_scripts`);
+INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, `search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES ((@maxDBScripts + 1), 2, 109740, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1153.612915', '-5519.226562', '11.995037', '0.005905', 'Move Darkspear Jailor to Captive Spitescale Scout (East Pit)');
 
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
 DELETE FROM `gossip_menu_option` WHERE `menu_id`=10974;
-INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `action_script_id`, `box_coded`, `box_money`, `box_text`, `condition_id`) VALUES (10974, 0, 0, "I'm ready to face my challenge.", 1, 1, -1, 0, 0, 0, 0, "", (@maxConditionEntry + 15));
-
+INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `action_script_id`, `box_coded`, `box_money`, `box_text`, `condition_id`) VALUES (10974, 0, 0, "I'm ready to face my challenge.", 1, 1, -1, 0, 109740, 0, 0, "", (@maxConditionEntry + 15));
 
 -- To-do:
 --   Confirm that naga is unattackable while inside the cage.
---   Jailor needs to walk over to the cage and open it up. (check to see if a db_script exists for this or not... if not, then create one and the id goes into the action_script_id of the gossip_menu_option)
 --   Naga needs to enter into the Proving Pit and become attackable.
-
+--   Duplicate the db_scripts for the other Jailor.
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
