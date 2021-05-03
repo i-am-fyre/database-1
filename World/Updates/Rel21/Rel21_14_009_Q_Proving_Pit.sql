@@ -43,6 +43,14 @@ BEGIN
         -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
+-- Add new db script strings
+SET @maxDbScriptStrings := (SELECT max(`entry`) FROM `db_script_string`);
+INSERT INTO db_script_string (`entry`, `content_default`) VALUES
+  ((@maxDbScriptStrings + 1), "Get in the pit and show us your stuff, boy."),
+  ((@maxDbScriptStrings + 2), "The Sssea Witch will kill you all."),
+  ((@maxDbScriptStrings + 3), "They sssend you to your death, youngling."),
+  ((@maxDbScriptStrings + 4), "I sshall sslaughter you. Darkspear runt!");
+
 
 -- Add new conditions - for every class's version of Proving Pit (-2 indicates OR statements)
 SET @maxConditionEntry := (SELECT max(`condition_entry`) FROM `conditions`);
@@ -66,7 +74,13 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
 
 -- Create db_scripts entry for handling Jailor movement, opening cage, Naga movement, and making Naga active.
 SET @maxDBScripts := (SELECT max(`script_guid`) FROM `db_scripts`);
-INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, `search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES ((@maxDBScripts + 1), 2, 109740, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1153.612915', '-5519.226562', '11.995037', '0.005905', 'Move Darkspear Jailor to Captive Spitescale Scout (East Pit)');
+INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, `search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES 
+((@maxDBScripts + 1), 2, 109740, 0, 0, 0, 0, 0, 0, 0, (@maxDbScriptStrings + 1), 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor speaks (East Pit)'),
+((@maxDBScripts + 2), 2, 109740, 2, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1153.61', '-5519.23', '11.995', '0.005905', 'Move Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 3), 2, 109740, 5, 11, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor open\'s cage for Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 4), 2, 109740, 6, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1149.16', '-5528.62', '8.10485', '4.77789', 'Captive Spitescale Scout moves into pit (East Pit)'),
+((@maxDBScripts + 5), 2, 109740, 7, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
+((@maxDBScripts + 6), 2, 109740, 7, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move Darkspear Jailor back to orginal spot (East Pit)');
 
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
 DELETE FROM `gossip_menu_option` WHERE `menu_id`=10974;
@@ -74,7 +88,7 @@ INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`,
 
 -- To-do:
 --   Confirm that naga is unattackable while inside the cage.
---   Naga needs to enter into the Proving Pit and become attackable.
+--   Add additional waypoints of movements so that Jailor doesn't walk over the spikes.
 --   Duplicate the db_scripts for the other Jailor.
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
