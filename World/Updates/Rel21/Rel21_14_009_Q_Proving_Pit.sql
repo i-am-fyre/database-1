@@ -47,10 +47,14 @@ BEGIN
 UPDATE `gameobject_template` SET `type`=0 WHERE `entry`=201968;
 
 
+-- Fix creature (Captive Spitescale Scout) to be unattackable - add flag 2 (UNIT_FLAG_NON_ATTACKABLE)
+UPDATE creature_template SET UnitFlags=32770 WHERE Entry=38142;
+
+
 -- Add new db script strings
 SET @maxDbScriptStrings := (SELECT max(`entry`) FROM `db_script_string`);
 INSERT INTO db_script_string (`entry`, `content_default`) VALUES
-  ((@maxDbScriptStrings + 1), "Get in the pit and show us your stuff, boy."),
+  ((@maxDbScriptStrings + 1), "Get in the pit and show us your stuff, $Gboy:girl;."),
   ((@maxDbScriptStrings + 2), "The Sssea Witch will kill you all."),
   ((@maxDbScriptStrings + 3), "They sssend you to your death, youngling."),
   ((@maxDbScriptStrings + 4), "I sshall sslaughter you. Darkspear runt!");
@@ -83,16 +87,17 @@ INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`
 ((@maxDBScripts + 2), 2, 109740, 2, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1153.61', '-5519.23', '11.995', '0.005905', 'Move Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
 ((@maxDBScripts + 3), 2, 109740, 5, 11, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor open\'s cage for Captive Spitescale Scout (East Pit)'),
 ((@maxDBScripts + 4), 2, 109740, 6, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1149.16', '-5528.62', '8.10485', '4.77789', 'Captive Spitescale Scout moves into pit (East Pit)'),
-((@maxDBScripts + 5), 2, 109740, 10, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
-((@maxDBScripts + 6), 2, 109740, 7, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move Darkspear Jailor back to orginal spot (East Pit)');
+((@maxDBScripts + 5), 2, 109740, 7, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 6), 2, 109740, 10, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
+((@maxDBScripts + 7), 2, 109740, 11, 5, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Captive Spitescale Scout becomes attackable (East Pit)');
 
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
 DELETE FROM `gossip_menu_option` WHERE `menu_id`=10974;
 INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `action_script_id`, `box_coded`, `box_money`, `box_text`, `condition_id`) VALUES (10974, 0, 0, "I'm ready to face my challenge.", 1, 1, -1, 0, 109740, 0, 0, "", (@maxConditionEntry + 15));
 
 -- To-do:
---   Confirm that naga is unattackable while inside the cage.
 --   Add additional waypoints of movements so that Jailor doesn't walk over the spikes.
+--   Make sure the whole thing 'resets' properly --> Cage closes, Captive Spitescale Scout becomes unattackable.
 --   Duplicate the db_scripts for the other Jailor.
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
