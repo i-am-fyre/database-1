@@ -78,25 +78,27 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
   ((@maxConditionEntry + 13), -2, (@maxConditionEntry + 6), (@maxConditionEntry + 12), "Proving Pits - Warlock OR Warrior OR Mage OR Shaman OR Druid OR Rogue"),
   ((@maxConditionEntry + 14), -2, (@maxConditionEntry + 7), (@maxConditionEntry + 13), "Proving Pits - Warlock OR Warrior OR Mage OR Shaman OR Druid OR Rogue OR Hunter"),
   ((@maxConditionEntry + 15), -2, (@maxConditionEntry + 8), (@maxConditionEntry + 14), "Proving Pits - Warlock OR Warrior OR Mage OR Shaman OR Druid OR Rogue OR Hunter OR Priest");
-  
 
 -- Create db_scripts entry for handling Jailor movement, opening cage, Naga movement, and making Naga active.
 SET @maxDBScripts := (SELECT max(`script_guid`) FROM `db_scripts`);
 INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, `search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES 
 ((@maxDBScripts + 1), 2, 109740, 0, 0, 0, 0, 0, 0, 0, (@maxDbScriptStrings + 1), 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor speaks (East Pit)'),
-((@maxDBScripts + 2), 2, 109740, 2, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1153.61', '-5519.23', '11.995', '0.005905', 'Move Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
-((@maxDBScripts + 3), 2, 109740, 5, 11, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor open\'s cage for Captive Spitescale Scout (East Pit)'),
-((@maxDBScripts + 4), 2, 109740, 6, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1149.16', '-5528.62', '8.10485', '4.77789', 'Captive Spitescale Scout moves into pit (East Pit)'),
-((@maxDBScripts + 5), 2, 109740, 7, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move Darkspear Jailor back to orginal spot (East Pit)'),
-((@maxDBScripts + 6), 2, 109740, 10, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
-((@maxDBScripts + 7), 2, 109740, 11, 5, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Captive Spitescale Scout becomes attackable (East Pit)');
+((@maxDBScripts + 2), 2, 109740, 2, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1153.61', '-5519.23', '11.995', '0.005905', 'Move(WP1) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 3), 2, 109740, 3, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1158.89', '-5521.25', '12.039', 0, 'Move(WP2) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 4), 2, 109740, 4, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1156.01', '-5519.12', '12.062', 0, 'Move(WP3) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 5), 2, 109740, 5, 11, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor open\'s cage for Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 6), 2, 109740, 6, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1149.16', '-5528.62', '8.10485', '4.77789', 'Captive Spitescale Scout moves into pit (East Pit)'),
+((@maxDBScripts + 7), 2, 109740, 7, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1156.01', '-5519.12', '12.062', 0, 'Move(WP3) Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 8), 2, 109740, 8, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1158.89', '-5521.25', '12.039', 0, 'Move(WP2) Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 9), 2, 109740, 9, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move(WP1) Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 10), 2, 109740, 10, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
+((@maxDBScripts + 11), 2, 109740, 11, 5, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Captive Spitescale Scout becomes attackable (East Pit)');
 
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
 DELETE FROM `gossip_menu_option` WHERE `menu_id`=10974;
 INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `action_script_id`, `box_coded`, `box_money`, `box_text`, `condition_id`) VALUES (10974, 0, 0, "I'm ready to face my challenge.", 1, 1, -1, 0, 109740, 0, 0, "", (@maxConditionEntry + 15));
 
 -- To-do:
---   Add additional waypoints of movements so that Jailor doesn't walk over the spikes.
 --   Make sure the whole thing 'resets' properly --> Cage closes, Captive Spitescale Scout becomes unattackable.
 --   Duplicate the db_scripts for the other Jailor.
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
