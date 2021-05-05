@@ -43,6 +43,10 @@ BEGIN
         -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
+-- Fix game object (Darkspear Cage) from type 10 (goober) to type 0 (door)
+UPDATE `gameobject_template` SET `type`=0 WHERE `entry`=201968;
+
+
 -- Add new db script strings
 SET @maxDbScriptStrings := (SELECT max(`entry`) FROM `db_script_string`);
 INSERT INTO db_script_string (`entry`, `content_default`) VALUES
@@ -79,7 +83,7 @@ INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`
 ((@maxDBScripts + 2), 2, 109740, 2, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1153.61', '-5519.23', '11.995', '0.005905', 'Move Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
 ((@maxDBScripts + 3), 2, 109740, 5, 11, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor open\'s cage for Captive Spitescale Scout (East Pit)'),
 ((@maxDBScripts + 4), 2, 109740, 6, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1149.16', '-5528.62', '8.10485', '4.77789', 'Captive Spitescale Scout moves into pit (East Pit)'),
-((@maxDBScripts + 5), 2, 109740, 7, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
+((@maxDBScripts + 5), 2, 109740, 10, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
 ((@maxDBScripts + 6), 2, 109740, 7, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move Darkspear Jailor back to orginal spot (East Pit)');
 
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
