@@ -83,24 +83,33 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
 SET @maxDBScripts := (SELECT max(`script_guid`) FROM `db_scripts`);
 INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, `search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES 
 ((@maxDBScripts + 1), 2, 109740, 0, 0, 0, 0, 0, 0, 0, (@maxDbScriptStrings + 1), 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor speaks (East Pit)'),
-((@maxDBScripts + 2), 2, 109740, 2, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1153.61', '-5519.23', '11.995', '0.005905', 'Move(WP1) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
-((@maxDBScripts + 3), 2, 109740, 3, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1158.89', '-5521.25', '12.039', 0, 'Move(WP2) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
-((@maxDBScripts + 4), 2, 109740, 4, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1156.01', '-5519.12', '12.062', 0, 'Move(WP3) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 2), 2, 109740, 2, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1159.47', '-5521.04', '12.047', '1.44878', 'Move(WP1) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 3), 2, 109740, 3, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1156.46', '-5518.46', '12.0968', '0.703769', 'Move(WP2) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
+((@maxDBScripts + 4), 2, 109740, 4, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1152.77', '-5519.02', '11.9839', '6.14095', 'Move(WP3) Darkspear Jailor to Captive Spitescale Scout (East Pit)'),
 ((@maxDBScripts + 5), 2, 109740, 5, 11, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Darkspear Jailor open\'s cage for Captive Spitescale Scout (East Pit)'),
 ((@maxDBScripts + 6), 2, 109740, 6, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1149.16', '-5528.62', '8.10485', '4.77789', 'Captive Spitescale Scout moves into pit (East Pit)'),
-((@maxDBScripts + 7), 2, 109740, 7, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1156.01', '-5519.12', '12.062', 0, 'Move(WP3) Darkspear Jailor back to orginal spot (East Pit)'),
-((@maxDBScripts + 8), 2, 109740, 8, 3, 0, 700, 0, 0, 0, 0, 0, 0, 0, '-1158.89', '-5521.25', '12.039', 0, 'Move(WP2) Darkspear Jailor back to orginal spot (East Pit)'),
-((@maxDBScripts + 9), 2, 109740, 9, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move(WP1) Darkspear Jailor back to orginal spot (East Pit)'),
-((@maxDBScripts + 10), 2, 109740, 10, 3, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
-((@maxDBScripts + 11), 2, 109740, 11, 5, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Captive Spitescale Scout becomes attackable (East Pit)');
+((@maxDBScripts + 7), 2, 109740, 7, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1156.46', '-5518.46', '12.0968', '0.703769', 'Move(WP2) Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 8), 2, 109740, 8, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.47', '-5521.04', '12.047', '1.44878', 'Move(WP1) Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 9), 2, 109740, 9, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1159.05', '-5529.85', '11.952', '6.24318', 'Move(WP0) Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 10), 2, 109740, 9, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1158.97', '-5529.84', '11.951', '6.25795', 'Move(Face correct orientation) Darkspear Jailor back to orginal spot (East Pit)'),
+((@maxDBScripts + 11), 2, 109740, 10, 0, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
+((@maxDBScripts + 12), 2, 109740, 11, 5, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Captive Spitescale Scout becomes attackable (East Pit)'),
+((@maxDBScripts + 13), 2, 109740, 293, 4, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0,  'Captive Spitescale Scout becomes unattackable (East Pit)'),
+((@maxDBScripts + 14), 2, 109740, 294, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1150.28', '-5519.25', '12.0351', '4.60763', 'Move Spitescale Scout back to original position (East Pit)'),
+((@maxDBScripts + 15), 2, 109740, 299, 12, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Close the cage (East Pit)');
 
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
 DELETE FROM `gossip_menu_option` WHERE `menu_id`=10974;
 INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `action_script_id`, `box_coded`, `box_money`, `box_text`, `condition_id`) VALUES (10974, 0, 0, "I'm ready to face my challenge.", 1, 1, -1, 0, 109740, 0, 0, "", (@maxConditionEntry + 15));
 
 -- To-do:
---   Make sure the whole thing 'resets' properly --> Cage closes, Captive Spitescale Scout becomes unattackable.
+--   Make sure the whole thing 'resets' properly
+--   -- Captive Spitescale Scout becomes unattackable - works when alive, but not when dead.
+--   -- Captive Spitescale Scout moves back into cage - works when alive, but not when dead.
+--   -- Cage closes - not working
+
 --   Duplicate the db_scripts for the other Jailor.
+
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
