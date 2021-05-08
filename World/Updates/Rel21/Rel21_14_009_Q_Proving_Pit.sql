@@ -94,9 +94,9 @@ INSERT INTO `db_scripts` (`script_guid`, `script_type`, `id`, `delay`, `command`
 ((@maxDBScripts + 10), 2, 109740, 9, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-1158.97', '-5529.84', '11.951', '6.25795', 'Move(Face correct orientation) Darkspear Jailor back to orginal spot (East Pit)'),
 ((@maxDBScripts + 11), 2, 109740, 10, 0, 0, 0, 38142, 25, 0, (@maxDbScriptStrings + 2), (@maxDbScriptStrings + 3), (@maxDbScriptStrings + 4), 0, 0, 0, 0, 0, 'Captive Spitescale Scout speaks (East Pit)'),
 ((@maxDBScripts + 12), 2, 109740, 11, 5, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Captive Spitescale Scout becomes attackable (East Pit)'),
-((@maxDBScripts + 13), 2, 109740, 293, 4, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0,  'Captive Spitescale Scout becomes unattackable (East Pit)'),
-((@maxDBScripts + 14), 2, 109740, 294, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1150.28', '-5519.25', '12.0351', '4.60763', 'Move Spitescale Scout back to original position (East Pit)'),
-((@maxDBScripts + 15), 2, 109740, 299, 12, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Close the cage (East Pit)');
+((@maxDBScripts + 13), 2, 109740, 23, 4, 53, 2, 38142, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0,  'Captive Spitescale Scout becomes unattackable (East Pit)'),
+((@maxDBScripts + 14), 2, 109740, 24, 3, 0, 0, 38142, 25, 0, 0, 0, 0, 0, '-1150.28', '-5519.25', '12.0351', '4.60763', 'Move Spitescale Scout back to original position (East Pit)'),
+((@maxDBScripts + 15), 2, 109740, 29, 12, 172893, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Close the cage (East Pit)');
 
 -- Updates the gossip_menu_option seen when clicking Darkspear Jailor - should be visible when quest is in quest log.
 DELETE FROM `gossip_menu_option` WHERE `menu_id`=10974;
